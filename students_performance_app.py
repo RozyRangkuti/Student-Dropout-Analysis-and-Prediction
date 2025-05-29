@@ -4,14 +4,33 @@ import numpy as np
 import joblib
 from sklearn.preprocessing import StandardScaler
 import io
-import datetime
-from preprocessing_data import data_preprocessing
 
 buffer = io.BytesIO()
 
 def color_mapping(value):
     color = 'green' if value == 'Graduate' else 'red'
     return f'color: {color}'
+
+def data_preprocessing(data_input, single_data, n):
+    """Preprocessing data
+
+    Args:
+        data (Pandas DataFrame): Dataframe that contain all the data to make prediction 
+        
+    return:
+        Pandas DataFrame: Dataframe that contain all the preprocessed data
+    """
+    
+    df = pd.read_csv('selection_student_data.csv')
+    df = df.drop(columns=['Status'], axis=1)
+    df = pd.concat([data_input, df])
+
+    df = StandardScaler().fit_transform(df)
+
+    if single_data:
+        return df[[n]]
+    else:
+        return df[0 : n]
 
 def model_predict(df):
     """Making prediction
@@ -24,7 +43,7 @@ def model_predict(df):
     """
     
     model = joblib.load("model/rdf_model.joblib")
-    return model.predict(df)    
+    return model.predict(df)
 
 def main():
     st.title('Jaya Jaya Institute Predict Students Dropout')
@@ -200,7 +219,7 @@ def main():
         
         # Prediction result
         @st.dialog('Result')
-        def predict(output):
+        def prediction(output):
             if output == 1:
                 st.success('Student Status Prediction: **Graduate**')
             else:
@@ -210,7 +229,7 @@ def main():
         if st.button('Predict'):
             data_input = data_preprocessing(df, True, 0)
             output = model_predict(data_input)
-            predict(output)
+            prediction(output)
             
     # Prediction container for multiple data using file upload
     with tab_multiple:
