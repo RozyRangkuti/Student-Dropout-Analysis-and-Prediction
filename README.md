@@ -190,7 +190,7 @@ streamlit run students_performance_app.py
 
 Sementara itu, untuk menghentikan aplikasi Streamlit yang sedang berjalan, cukup tekan Ctrl + C pada Terminal.
 
-Sistem prediksi tersebut juga tersedia secara online dan dapat diakses langsung melalui tautan yang telah di-deploy ke Streamlit Cloud pada link berikut ini.
+Sistem prediksi tersebut juga tersedia secara online dan dapat diakses langsung melalui tautan yang telah di-deploy ke Streamlit Cloud pada link berikut ini: https://student-dropout-analysis-and-prediction-id.streamlit.app
 
 ## Conclusion
 Berikut adalah sejumlah poin utama yang dapat disimpulkan:
