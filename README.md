@@ -66,7 +66,7 @@ Untuk mengatasi hal ini, institusi perlu mengembangkan sistem yang mampu mendete
 3. Login ke Metabase menggunakan username dan password berikut
    ```bash
    Username : muhammadrozy37@gmail.com
-   Pass     : mrozys123
+   Pass     : *************
    ```
 
 ## Bussiness Dashbord Using Metabase
